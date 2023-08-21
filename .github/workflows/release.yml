@@ -27,11 +27,9 @@ jobs:
           echo 'Creating Image'
           chmod +x ./deployment.sh
           ./deployment.sh
-          echo 'Image Created'
           docker tag ghapp 421894463161.dkr.ecr.us-east-1.amazonaws.com/ghapp
-
+          echo 'Image Created'
  
-
       - name: Push Docker image to ECR
         run: |
           docker push 421894463161.dkr.ecr.us-east-1.amazonaws.com/ghapp
