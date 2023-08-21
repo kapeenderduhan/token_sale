@@ -39,6 +39,7 @@ jobs:
           aws eks update-kubeconfig --name ghapp-cluster --kubeconfig kubeconfig
           cat kubeconfig
           kubectl config get-contexts
+          kubectl get nodes
           kubectl apply -f ./manifest.yml
           kubectl apply -f ./service.yml
         env:
