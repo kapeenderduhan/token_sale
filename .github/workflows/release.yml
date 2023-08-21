@@ -33,4 +33,20 @@ jobs:
       - name: Push Docker image to ECR
         run: |
           docker push 421894463161.dkr.ecr.us-east-1.amazonaws.com/ghapp
-          
+
+      - name: Generate kubeconfig
+        run: |
+          aws eks update-kubeconfig --name ghapp-cluster --kubeconfig kubeconfig
+        env:
+          KUBECONFIG: kubeconfig
+
+      - name: Install kubectl
+        run: |
+          curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+          chmod +x kubectl
+          sudo mv kubectl /usr/local/bin/
+
+      - name: Deploy to EKS
+        run: |
+          kubectl apply -f manifest.yaml
+          kubectl apply -f service.yaml
