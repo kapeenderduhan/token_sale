@@ -38,6 +38,7 @@ jobs:
         run: |
           aws eks update-kubeconfig --name ghapp-cluster --kubeconfig kubeconfig
           cat kubeconfig
+          kubectl config get-contexts
         env:
           KUBECONFIG: kubeconfig
 
