@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ghapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ghapp
+  template:
+    metadata:
+      labels:
+        app: ghapp
+    spec:
+      containers:
+        - name: ghapp
+          image: 421894463161.dkr.ecr.us-east-1.amazonaws.com/ghapp
+          ports:
+            - containerPort: 3000
