@@ -13,7 +13,8 @@ jobs:
 
       - name: Docker build with script
         run: |
-          echo 'starting'
-          chmod +x ./script.sh
-          echo 'executing file'
-          ./script.sh
+          echo 'Creating Image'
+          chmod +x ./deployment.sh
+          .\deployment.sh
+          echo 'Image Created'
+          
