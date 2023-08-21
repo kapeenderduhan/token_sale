@@ -7,8 +7,13 @@ docker build -t ghapp .
 if [ $? -eq 0 ]; then
   # Remove Dangling Images
   echo "Remove Previous Image."
-  docker images -f "dangling=true" -q | xargs docker rmi -f
+  DANGLING_IMAGES=$(docker images -f "dangling=true" -q)
 
+if [ -n "$DANGLING_IMAGES" ]; then
+  echo "$DANGLING_IMAGES" | xargs docker rmi -f
+else
+  echo "No dangling images found."
+fi
 else
   echo "Image build failed. Keeping the previous image."
 fi
