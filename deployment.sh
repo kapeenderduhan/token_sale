@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Build the new Docker image
-docker build -t my-new-image .
+docker build -t ghapp .
 
 # Check if the new image build was successful
 if [ $? -eq 0 ]; then
