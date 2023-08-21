@@ -10,13 +10,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: Docker build with script
-        run: |
-          echo 'Creating Image'
-          chmod +x ./deployment.sh
-          ./deployment.sh
-          echo 'Image Created'
       - name: Set up AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -31,6 +24,10 @@ jobs:
           
       - name: Build and tag Docker image
         run: |
+          echo 'Creating Image'
+          chmod +x ./deployment.sh
+          ./deployment.sh
+          echo 'Image Created'
           docker tag ghapp 421894463161.dkr.ecr.us-east-1.amazonaws.com/ghapp
 
  
