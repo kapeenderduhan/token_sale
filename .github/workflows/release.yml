@@ -10,5 +10,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        
-         echo "pika" 
+
+      - name: Echo Sample
+         run :|
+            echo "Pika"      
