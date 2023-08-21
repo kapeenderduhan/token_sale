@@ -11,5 +11,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Echo Sample
-        run: docker version
+      - name: Docker build with script
+        run: |
+          echo 'starting'
+          chmod +x ./script.sh
+          echo 'executing file'
+          ./script.sh
