@@ -17,4 +17,25 @@ jobs:
           chmod +x ./deployment.sh
           ./deployment.sh
           echo 'Image Created'
+      - name: Set up AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: AKIAWEOW6T24WJRQ3QGT
+          aws-secret-access-key: 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
+          aws-region: us-east-1
+          
+      - name: Log in to Amazon ECR
+        id: login-ecr
+        run: |
+          aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 421894463161.dkr.ecr.us-east-1.amazonaws.com
+          
+      - name: Build and tag Docker image
+        run: |
+          docker tag ghapp 421894463161.dkr.ecr.us-east-1.amazonaws.com/ghapp
+
+ 
+
+      - name: Push Docker image to ECR
+        run: |
+          docker push 421894463161.dkr.ecr.us-east-1.amazonaws.com/ghapp
           
