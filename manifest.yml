@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: ghapp
-          image: 421894463161.dkr.ecr.us-east-1.amazonaws.com/ghapp
+          image: 837005229064.dkr.ecr.ap-northeast-1.amazonaws.com/ghapp
           ports:
             - containerPort: 3000
