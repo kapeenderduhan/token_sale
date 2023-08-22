@@ -34,9 +34,9 @@ jobs:
         run: |
           docker push 421894463161.dkr.ecr.us-east-1.amazonaws.com/ghapp
 
-      - name: Generate kubeconfig
+      - name: Generate Kubeconfig and Deploy To EKS
         run: |
-          aws eks update-kubeconfig --name ghapp-cluster --kubeconfig kubeconfig
+          aws eks update-kubeconfig --name ghapp --kubeconfig kubeconfig
           cat kubeconfig
           kubectl config get-contexts
           kubectl get nodes
@@ -44,9 +44,3 @@ jobs:
           kubectl apply -f ./service.yml
         env:
           KUBECONFIG: kubeconfig
-
-      - name: Deploy to EKS
-        run: |
-          kubectl config get-contexts
-#          kubectl apply -f manifest.yml
-#          kubectl apply -f service.yml
