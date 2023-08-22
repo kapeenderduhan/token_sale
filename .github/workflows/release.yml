@@ -36,7 +36,7 @@ jobs:
 
       - name: Generate Kubeconfig and Deploy To EKS
         run: |
-          aws eks update-kubeconfig --name ghapp --kubeconfig kubeconfig
+          aws eks update-kubeconfig --name ghapp-cluster --kubeconfig kubeconfig
           cat kubeconfig
           kubectl config get-contexts
           kubectl get nodes
