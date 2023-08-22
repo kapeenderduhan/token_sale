@@ -17,3 +17,4 @@ spec:
           image: 837005229064.dkr.ecr.ap-northeast-1.amazonaws.com/ghapp
           ports:
             - containerPort: 3000
+
