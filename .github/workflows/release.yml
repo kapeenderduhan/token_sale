@@ -40,7 +40,7 @@ jobs:
           cat kubeconfig
           kubectl config get-contexts
           kubectl get nodes
-          kubectl get po -al
+          kubectl get po
           # kubectl apply -f ./manifest.yml
           # kubectl apply -f ./service.yml
         env:
