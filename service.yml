@@ -4,7 +4,7 @@ metadata:
   name: ghapp
 spec:
   selector:
-    app: ghapp
+    app.kubernetes.io/name: ghapp
   ports:
     - protocol: TCP
       port: 80
