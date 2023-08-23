@@ -36,8 +36,6 @@ spec:
                   
                   number: 80
 
-
-
 ---
 
 apiVersion: v1
