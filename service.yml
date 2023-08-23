@@ -4,8 +4,8 @@ metadata:
   name: ghapp
   labels:
     app: ghapp
-  annotations:
-    service.beta.kubernetes.io/aws-load-balancer-type: nlb
+  # annotations:
+  #   service.beta.kubernetes.io/aws-load-balancer-type: nlb
 spec:
   selector:
     app.kubernetes.io/name: ghapp
@@ -14,8 +14,10 @@ spec:
       protocol: TCP
       port: 80
       targetPort: 3000
+      nodePort: 31234
     - name: https
       protocol: TCP
       port: 443
       targetPort: 3000
-  type: LoadBalancer
+      nodePort: 31235
+  type: NodePort
